@@ -1,0 +1,14 @@
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/EcommercebackendApplication.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/config/SecurityConfig.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/controller/AuthController.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/controller/RootController.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/controller/UserController.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/dto/AuthResponse.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/dto/LoginRequest.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/dto/RegisterRequest.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/dto/UserRegisteredEvent.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/model/User.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/security/JwtAuthenticationFilter.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/security/JwtTokenProvider.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/service/KafkaProducerService.java
+/Users/jasonwu/Downloads/ecommerce-platform/auth-service/src/main/java/com/csen160/ecommercebackend/service/UserService.java
