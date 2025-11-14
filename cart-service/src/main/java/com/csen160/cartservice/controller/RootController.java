@@ -1,0 +1,14 @@
+package com.csen160.cartservice.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RootController {
+
+    @GetMapping("/")
+    public String root() {
+        return "Cart Service is running!";
+    }
+}
+

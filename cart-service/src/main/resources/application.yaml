@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: cartservice
+  kafka:
+    bootstrap-servers: "localhost:9092"
+    consumer:
+      group-id: "cart-service"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: "orderCreatedEvent:com.csen160.cartservice.dto.OrderCreatedEvent"
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: "com.csen160.cartservice.dto.OrderCreatedEvent"
+
+server:
+  port: 8082
+
