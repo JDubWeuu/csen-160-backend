@@ -37,7 +37,14 @@ cd order-service
 mvn spring-boot:run
 ```
 
-### 4. Access Services via API Gateway
+### 4. Start Cart Service
+
+```bash
+cd cart-service
+mvn spring-boot:run
+```
+
+### 5. Access Services via API Gateway
 
 All requests should go through the Nginx API Gateway at **http://localhost**
 
@@ -51,6 +58,7 @@ All requests should go through the Nginx API Gateway at **http://localhost**
 - **Nginx API Gateway** (port 80): Routes all API requests to appropriate microservices
 - **Auth Service** (port 8080): User registration, login, JWT authentication
 - **Order Service** (port 8081): Order creation and management
+- **Cart Service** (port 8081): Adding items to cart and clearing items from cart
 
 Both services communicate via Kafka topics:
 
@@ -63,8 +71,4 @@ The Nginx API Gateway routes requests as follows:
 
 - `/api/auth/*` → Auth Service (port 8080)
 - `/api/orders/*` → Order Service (port 8081)
-- `/api/users/*` → Auth Service (port 8080)
-
-## Documentation
-
-See `MICROSERVICES_SETUP.md` for detailed setup and testing instructions.
+- `/api/cart/*` → Order Service (port 8082)
