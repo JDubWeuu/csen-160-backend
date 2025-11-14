@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart")
@@ -88,7 +87,10 @@ public class CartController {
             @RequestHeader(value = "X-User-Id", required = false) String userIdHeader) {
         try {
             Long userId = Long.parseLong(userIdHeader);
-            cartService.clearCart(userId);
+            boolean wasAlreadyEmpty = cartService.clearCart(userId);
+            if (wasAlreadyEmpty) {
+                return ResponseEntity.ok("Cart is already empty");
+            }
             return ResponseEntity.ok("Cart cleared successfully");
         } catch (NumberFormatException e) {
             return ResponseEntity.status(400).body("Invalid user ID in header");

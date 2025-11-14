@@ -59,44 +59,6 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/{orderId}")
-    public ResponseEntity<?> getOrderById(@PathVariable Long orderId) {
-        try {
-            Order order = orderService.getOrderById(orderId);
-            return ResponseEntity.ok(new OrderResponse(order));
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-    }
-
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getOrdersByUserId(
-            @PathVariable Long userId,
-            @RequestHeader(value = "X-User-Id", required = false) String userIdHeader) {
-        // Validate that user can only access their own orders
-        if (userIdHeader != null) {
-            Long authenticatedUserId = Long.parseLong(userIdHeader);
-            if (!userId.equals(authenticatedUserId)) {
-                return ResponseEntity.status(403).body("Cannot access orders for different user");
-            }
-        }
-        
-        List<Order> orders = orderService.getOrdersByUserId(userId);
-        List<OrderResponse> responses = orders.stream()
-                .map(OrderResponse::new)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(responses);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<OrderResponse>> getAllOrders() {
-        List<Order> orders = orderService.getAllOrders();
-        List<OrderResponse> responses = orders.stream()
-                .map(OrderResponse::new)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(responses);
-    }
-
     @PostMapping("/from-cart")
     public ResponseEntity<?> createOrderFromCart(
             @RequestParam(value = "clearCart", defaultValue = "true") boolean clearCart,
@@ -141,6 +103,44 @@ public class OrderController {
             return ResponseEntity.ok(summary);
         } catch (NumberFormatException e) {
             return ResponseEntity.status(400).body("Invalid user ID in header");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getOrdersByUserId(
+            @PathVariable Long userId,
+            @RequestHeader(value = "X-User-Id", required = false) String userIdHeader) {
+        // Validate that user can only access their own orders
+        if (userIdHeader != null) {
+            Long authenticatedUserId = Long.parseLong(userIdHeader);
+            if (!userId.equals(authenticatedUserId)) {
+                return ResponseEntity.status(403).body("Cannot access orders for different user");
+            }
+        }
+        
+        List<Order> orders = orderService.getOrdersByUserId(userId);
+        List<OrderResponse> responses = orders.stream()
+                .map(OrderResponse::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(responses);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderResponse>> getAllOrders() {
+        List<Order> orders = orderService.getAllOrders();
+        List<OrderResponse> responses = orders.stream()
+                .map(OrderResponse::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(responses);
+    }
+
+    @GetMapping("/{orderId:\\d+}")
+    public ResponseEntity<?> getOrderById(@PathVariable Long orderId) {
+        try {
+            Order order = orderService.getOrderById(orderId);
+            return ResponseEntity.ok(new OrderResponse(order));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

@@ -1,3 +1,5 @@
 MICROSERVICES_SETUP.md
 auth-service/target/classes/application-local.yaml
 auth-service/src/main/resources/application-local.yaml
+auth-service/target/classes/application.yaml
+auth-service/src/main/resources/application.yaml

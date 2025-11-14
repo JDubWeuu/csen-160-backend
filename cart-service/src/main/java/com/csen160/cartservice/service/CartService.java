@@ -76,10 +76,14 @@ public class CartService {
         return cart;
     }
 
-    public void clearCart(Long userId) {
+    public boolean clearCart(Long userId) {
         Cart cart = getCart(userId);
+        if (cart.getItems().isEmpty()) {
+            return true; // Cart was already empty
+        }
         cart.getItems().clear();
         cart.calculateTotal();
+        return false; // Cart had items that were cleared
     }
 
     public List<CartItem> getCartItems(Long userId) {
