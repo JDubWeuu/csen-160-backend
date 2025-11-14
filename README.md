@@ -71,4 +71,4 @@ The Nginx API Gateway routes requests as follows:
 
 - `/api/auth/*` → Auth Service (port 8080)
 - `/api/orders/*` → Order Service (port 8081)
-- `/api/cart/*` → Order Service (port 8082)
+- `/api/cart/*` → Cart Service (port 8082)
