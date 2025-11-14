@@ -58,7 +58,7 @@ All requests should go through the Nginx API Gateway at **http://localhost**
 - **Nginx API Gateway** (port 80): Routes all API requests to appropriate microservices
 - **Auth Service** (port 8080): User registration, login, JWT authentication
 - **Order Service** (port 8081): Order creation and management
-- **Cart Service** (port 8081): Adding items to cart and clearing items from cart
+- **Cart Service** (port 8082): Adding items to cart and clearing items from cart
 
 Both services communicate via Kafka topics:
 
